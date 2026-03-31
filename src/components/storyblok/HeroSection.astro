@@ -1,0 +1,79 @@
+---
+interface Props {
+  headline?: string;
+  services?: string[];
+  doctorImage?: string;
+}
+
+const {
+  headline = "Your Partner in Healthy, Confident Smiles",
+  services = [
+    "Dental Check-up & Oral Examination",
+    "Professional Teeth Cleaning (Oral Prophylaxis)",
+    "Tooth Fillings & Restorations",
+    "Tooth Extraction (Simple & Surgical)",
+    "Dentures (Complete & Partial)",
+    "Teeth Whitening",
+    "Braces Consultation & Orthodontic Services",
+    "Pediatric Dental Care",
+    "Preventive Fluoride Treatment & Sealants",
+  ],
+  doctorImage = "/doctor.png",
+} = Astro.props;
+---
+
+<section class="w-full bg-white py-16 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+    <!-- LEFT: Doctor Image with orange circle -->
+    <div class="relative flex items-center justify-center">
+      
+      <!-- Orange circle background -->
+      <div class="absolute inset-0 flex items-center justify-center z-0">
+        <div class="w-72 h-72 md:w-96 md:h-96 bg-[#FF9067] rounded-full"></div>
+      </div>
+
+      <!-- Doctor image -->
+      <img
+        src={doctorImage}
+        alt="Doctor"
+        loading="lazy"
+        class="relative z-10 h-80 md:h-105 w-auto object-contain drop-shadow-lg"
+      />
+    </div>
+
+    <!-- RIGHT: Text content -->
+    <div class="flex flex-col gap-6">
+
+      <!-- Headline -->
+      <h1 class="text-3xl md:text-4xl font-extrabold text-brand-orange italic leading-tight">
+        {headline}
+      </h1>
+
+      <!-- Book Appointment Button -->
+      <a
+        href="#contact"
+        class="inline-flex items-center gap-2 bg-brand-yellow text-white font-semibold px-6 py-3 rounded-md w-fit hover:opacity-90 transition-opacity"
+      >
+        Book Appointment
+        <span>→</span>
+      </a>
+
+      <!-- Services List -->
+      <div>
+        <h2 class="text-base font-semibold text-brand-orange mb-3">
+          Services Offered
+        </h2>
+        <ul class="flex flex-col gap-1.5">
+          {services.map((service) => (
+            <li class="flex items-start gap-2 text-sm text-[#FD642C]">
+              <span class="text-brand-orange mt-0.5">•</span>
+              <span>{service}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
