@@ -1,17 +1,29 @@
 ---
+import '../styles/global.css';
+import { useStoryblokApi } from '@storyblok/astro';
 
+const storyblokApi = useStoryblokApi();
+
+const { data } = await storyblokApi.get('cdn/stories/home', {
+  version: 'draft',
+});
+
+const story = data.story;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ngiting Dental</title>
+  </head>
+  <body>
+    <h1 class="text-4xl font-bold text-brand-orange p-8">
+      Connection Test 🦷
+    </h1>
+    <pre class="p-8 bg-gray-100 text-sm">
+      Story name: {story.name}
+      Story slug: {story.slug}
+      Status: Connected! ✅
+    </pre>
+  </body>
 </html>
