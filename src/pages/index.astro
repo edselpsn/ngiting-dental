@@ -1,29 +1,11 @@
 ---
-import '../styles/global.css';
-import { useStoryblokApi } from '@storyblok/astro';
-
-const storyblokApi = useStoryblokApi();
-
-const { data } = await storyblokApi.get('cdn/stories/home', {
-  version: 'draft',
-});
-
-const story = data.story;
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Ngiting Dental</title>
-  </head>
-  <body>
-    <h1 class="text-4xl font-bold text-brand-orange p-8">
-      Connection Test 🦷
+<BaseLayout title="Ngiting Dental - Home">
+  <div class="min-h-screen flex items-center justify-center">
+    <h1 class="text-4xl font-bold text-brand-orange">
+      Welcome to Ngiting Dental
     </h1>
-    <pre class="p-8 bg-gray-100 text-sm">
-      Story name: {story.name}
-      Story slug: {story.slug}
-      Status: Connected! ✅
-    </pre>
-  </body>
-</html>
+  </div>
+</BaseLayout>

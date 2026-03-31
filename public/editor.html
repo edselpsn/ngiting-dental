@@ -5,9 +5,14 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="text/javascript">
-      STORYBLOK_PREVIEW_URL = 'http://localhost:4321/'
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const slug = urlParams.get('slug') || '';
+
+      STORYBLOK_PREVIEW_URL = `https://localhost:4321/${slug}`;
     </script>
-    <script src="https://app.storyblok.com/f/app-latest.js" type="text/javascript"></script>
+
+    <script src="https://app.storyblok.com/f/app-latest.js"></script>
   </body>
-</html>e
+</html>

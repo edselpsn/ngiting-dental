@@ -24,3 +24,6 @@ pnpm-debug.log*
 .idea/
 
 .vscode/
+
+localhost.pem
+localhost-key.pem

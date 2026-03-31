@@ -1,0 +1,95 @@
+---
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Our Team', href: '#team' },
+  { label: 'Contact Us', href: '#contact' },
+  { label: 'Testimonials', href: '#testimonials' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="w-full bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Left Nav Links -->
+    <ul class="hidden md:flex items-center gap-6">
+      {navLinks.slice(0, 2).map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class={`text-sm font-medium transition-colors hover:text-brand-orange
+              ${currentPath === link.href
+                ? 'text-brand-orange border-b-2 border-brand-orange pb-1'
+                : 'text-gray-700'
+              }`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Center Logo -->
+    <a href="/" class="flex items-center gap-2 text-xl font-bold text-gray-800">
+      <span>Ngiting Dental</span>
+    </a>
+
+    <!-- Right Nav Links -->
+    <ul class="hidden md:flex items-center gap-6">
+      {navLinks.slice(2).map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class={`text-sm font-medium transition-colors hover:text-brand-orange
+              ${currentPath === link.href
+                ? 'text-brand-orange border-b-2 border-brand-orange pb-1'
+                : 'text-gray-700'
+              }`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile Hamburger -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col gap-1.5 p-2"
+      aria-label="Toggle menu"
+    >
+      <span class="w-6 h-0.5 bg-gray-700 block"></span>
+      <span class="w-6 h-0.5 bg-gray-700 block"></span>
+      <span class="w-6 h-0.5 bg-gray-700 block"></span>
+    </button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4">
+    <ul class="flex flex-col gap-4">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-sm font-medium text-gray-700 hover:text-brand-orange transition-colors"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>
